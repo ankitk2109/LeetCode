@@ -1,4 +1,4 @@
-PS: https://leetcode.com/problems/pascals-triangle/submissions/
+#PS: https://leetcode.com/problems/pascals-triangle/submissions/
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         res = []

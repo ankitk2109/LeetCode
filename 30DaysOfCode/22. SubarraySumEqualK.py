@@ -3,17 +3,21 @@ class Solution:
         if not nums:
             return 0
         
-        sums_so_far = defaultdict(int)
-        our_sum = 0
-        num_subarrays = 0
-        for v in nums:
-            our_sum += v
-            if our_sum == k:
-                num_subarrays += 1
-            if (our_sum - k) in sums_so_far:
-                num_subarrays += sums_so_far[our_sum - k]
-            sums_so_far[our_sum] += 1
-        return num_subarrays
+        prefix_sum = {}
+        cur_sum = 0
+        count = 0
+        for num in nums:
+            cur_sum += num
+           
+            if cur_sum == k:
+                count +=1
             
+            if cur_sum - k in prefix_sum:
+                    count += prefix_sum[cur_sum - k]
             
-            
+            if cur_sum not in prefix_sum:
+                prefix_sum[cur_sum] = 1
+            else:
+                prefix_sum[cur_sum] += 1
+
+        return(count)
